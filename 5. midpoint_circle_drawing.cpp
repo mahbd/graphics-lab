@@ -1,47 +1,45 @@
-#include <graphics.h>
-#include <math.h>
+// C++ program for implementing
+// Mid-Point Circle Drawing Algorithm
+#include<iostream>
+#include<graphics.h>
+using namespace std;
 
-void drawCircle(int xc, int yc, int radius) {
-    int x = radius;
-    int y = 0;
-    int p = 1 - radius;
-    putpixel(xc + x, yc - y, WHITE);
-    if (radius > 0) {
-        putpixel(xc - x, yc - y, WHITE);
-        putpixel(xc + y, yc + x, WHITE);
-        putpixel(xc - y, yc + x, WHITE);
-    }
-    int two_x = 2 * x;
-    int two_y = 2 * y;
-
+// Implementing Mid-Point Circle Drawing Algorithm
+void midPointCircleDraw(int x_centre, int y_centre, int r) {
+    int x = r, y = 0;
+    int P = 1 - r;
     while (x > y) {
         y++;
-        if (p <= 0)
-            p = p + two_y + 1;
+
+        // Mid-point is inside or on the perimeter
+        if (P <= 0)
+            P = P + 2*y + 1;
+        // Mid-point is outside the perimeter
         else {
             x--;
-            p = p + two_y - two_x + 1;
+            P = P + 2*y - 2*x + 1;
         }
+
+        // All the perimeter points have already been printed
         if (x < y)
             break;
-        putpixel(xc + x, yc - y, WHITE);
-        putpixel(xc - x, yc - y, WHITE);
-        putpixel(xc + x, yc + y, WHITE);
-        putpixel(xc - x, yc + y, WHITE);
-        if (x != y) {
-            putpixel(xc + y, yc - x, WHITE);
-            putpixel(xc - y, yc - x, WHITE);
-            putpixel(xc + y, yc + x, WHITE);
-            putpixel(xc - y, yc + x, WHITE);
-        }
+
+        putpixel(x + x_centre, y + y_centre, WHITE);
+        putpixel(-x + x_centre, y + y_centre, WHITE);
+        putpixel(x + x_centre, -y + y_centre, WHITE);
+        putpixel(-x + x_centre, -y + y_centre, WHITE);
+        putpixel(y + x_centre, x + y_centre, WHITE);
+        putpixel(-y + x_centre, x + y_centre, WHITE);
+        putpixel(y + x_centre, -x + y_centre, WHITE);
+        putpixel(-y + x_centre, -x + y_centre, WHITE);
     }
 }
 
-
+// Driver code
 int main() {
     int gd = DETECT, gm;
-	initgraph(&gd, &gm, "");
-	drawCircle(200, 200, 100);
-	getch();
+    initgraph(&gd, &gm, "");
+    midPointCircleDraw(60, 60, 30);
+    getch();
     return 0;
 }
