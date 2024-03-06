@@ -2,21 +2,31 @@
 #include <graphics.h>
 using namespace std;
 
+int n = 3, x[100], y[100], i;
+
+void draw() {
+    for (i = 0; i < n; i++) {
+        line(x[i], y[i], x[(i + 1) % n], y[(i + 1) % n]);
+    }
+}
+
+void reflection() {
+    setcolor(WHITE);
+    draw();
+    for (i = 0; i < n; i++) {
+        x[i] = x[i];
+        y[i] = -y[i] + 500;
+    }
+    setcolor(GREEN);
+    draw();
+}
+
 int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
 
-    int x1=200,y1=300,x2=500,y2=300,x3=350,y3=400;
-    cout<<"triangle before reflection"<<endl;
-    setcolor(3);
-    line(x1,y1,x2,y2);
-    line(x1,y1,x3,y3);
-    line(x2,y2,x3,y3);
-    cout<<"triangle after reflection"<<endl;
-    setcolor(5);
-    line(x1,-y1+500,x2,-y2+500);
-    line(x1,-y1+500,x3,-y3+500);
-    line(x2,-y2+500,x3,-y3+500);
+    x[0]=200,y[0]=300,x[1]=500,y[1]=300,x[2]=350,y[2]=400;
+    reflection();
     getch();
     return 0;
 }
