@@ -14,8 +14,6 @@ void midPointCircleDraw(int x_centre, int y_centre, int r) {
             y--;
             P = P + 2*x - 2*y + 1;
         }
-        if (y < x)
-            break;
 
         putpixel(x + x_centre, y + y_centre, WHITE);
         putpixel(-x + x_centre, y + y_centre, WHITE);
@@ -31,7 +29,7 @@ void midPointCircleDraw(int x_centre, int y_centre, int r) {
 int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
-    midPointCircleDraw(60, 60, 30);
+    midPointCircleDraw(60, 60, 50);
     getch();
     return 0;
 }

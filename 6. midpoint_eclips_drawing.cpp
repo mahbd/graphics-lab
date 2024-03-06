@@ -21,11 +21,11 @@ void ellipse(int rx, int ry, int xc, int yc) {
         putpixel(x + xc, -y + yc, WHITE);
         putpixel(-x + xc, -y + yc, WHITE);
         dx = dx + (2 * ry * ry);
+        x++;
+
         if (p1 < 0) {
-            x++;
             p1 = p1 + dx + (ry * ry);
         } else {
-            x++;
             y--;
             dy = dy - (2 * rx * rx);
             p1 = p1 + dx + (ry * ry) - dy;
@@ -42,12 +42,12 @@ void ellipse(int rx, int ry, int xc, int yc) {
         putpixel(-x + xc, y + yc, WHITE);
         putpixel(x + xc, -y + yc, WHITE);
         putpixel(-x + xc, -y + yc, WHITE);
+        y--;
+
         if (p2 > 0) {
-            y--;
             dy = dy - (2 * rx * rx);
             p2 = p2 + (rx * rx) - dy;
         } else {
-            y--;
             x++;
             dx = dx + (2 * ry * ry);
             dy = dy - (2 * rx * rx);

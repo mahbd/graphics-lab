@@ -14,6 +14,7 @@ void drawCircle(int xc, int yc, int radius) {
         putpixel(xc + y, yc - x, WHITE);
         putpixel(xc - y, yc + x, WHITE);
         putpixel(xc - y, yc - x, WHITE);
+
         x++;
         if (p > 0) {
             y--;

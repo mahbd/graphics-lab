@@ -94,7 +94,7 @@ void clip(struct lines mylines) {
 // Driver Function
 int main() {
     int gd = DETECT, gm;
-    initgraph(&gd, &gm, NULL);
+    initgraph(&gd, &gm, "");
 
     // Setting values of Clipping window
     xmin = 40;

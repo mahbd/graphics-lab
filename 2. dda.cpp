@@ -23,7 +23,7 @@ void dda(int x0, int y0, int x1, int y1) {
 int main() {
     int gd = DETECT, gm;
 	initgraph(&gd, &gm, "");
-    dda(100, 100, 180, 160);
+    dda(-100, -100, 180, 160);
     getch();
     return 0;
 }

@@ -11,8 +11,8 @@ void draw() {
     }
 }
 
-void scale() {
-    setcolor(RED);
+void traslation() {
+    setcolor(WHITE);
     draw();
     for (i = 0; i < n; i++) {
         x[i] = x[i] + tx;
@@ -33,7 +33,7 @@ int main() {
     }
     cout << "Enter traslation factors: tx and ty : ";
     cin >> tx >> ty;
-    scale();
+    traslation();
     getch();
     return 0;
 }
