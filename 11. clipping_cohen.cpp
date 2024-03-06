@@ -8,17 +8,10 @@ struct lines {
     int x1, y1, x2, y2;
 };
 
-int sign(int x) {
-    if (x > 0)
-        return 1;
-    else
-        return 0;
-}
-
 
 void clip(struct lines mylines) {
     int bits1 = 0, bits2 = 0, i, var;
-    setcolor(GREEN);
+    setcolor(YELLOW);
     bits1 |= (ymax < mylines.y1) << 3;
     bits2 |= (ymax < mylines.y2) << 3;
     bits1 |= (ymin > mylines.y1) << 2;
@@ -28,15 +21,12 @@ void clip(struct lines mylines) {
     bits1 |= (xmin > mylines.x1) << 0;
     bits2 |= (xmin > mylines.x2) << 0;
 
-    cout << bits1 << " " << bits2 << endl;
-
     if (bits1 == bits2 && bits1 == 0) {
         line(mylines.x1, mylines.y1, mylines.x2, mylines.y2);
         return;
     }
 
     if ((bits1 & bits2) != 0) {
-        cout << "No clipping" << endl;
         return;
     }
 
@@ -44,13 +34,11 @@ void clip(struct lines mylines) {
     float c = mylines.y1 - m * mylines.x1;
     if ((bits1 & (1 << 0)) != (bits2 & (1 << 0))) {
         if ((bits1 & (1 << 0)) != 0) {
-            cout << "Cut left side of x1" << endl;
             var = round(m * xmin + c);
             mylines.y1 = var;
             mylines.x1 = xmin;
         }
         if ((bits2 & (1 << 0)) != 0) {
-            cout << "Cut left side of x2" << endl;
             var = round(m * xmin + c);
             mylines.y2 = var;
             mylines.x2 = xmin;
@@ -106,6 +94,7 @@ void clip(struct lines mylines) {
 // Driver Function
 int main() {
     int gd = DETECT, gm;
+    initgraph(&gd, &gm, NULL);
 
     // Setting values of Clipping window
     xmin = 40;
@@ -114,7 +103,6 @@ int main() {
     ymax = 80;
 
     // initialize the graph
-    initgraph(&gd, &gm, NULL);
 
     // Drawing Window using Lines
     line(xmin, ymin, xmax, ymin);
