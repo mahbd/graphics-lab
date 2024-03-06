@@ -29,12 +29,8 @@ void rotation() {
 int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
-    cout<<"Enter coordinates of triangle: ";
-    cin>>x[0]>>y[0];
-    cin>>x[1]>>y[1];
-    cin>>x[2]>>y[2];
-    cout<<"Enter rotation angle: ";
-    cin>>angle;
+    x[0] = 100, y[0] = 150, x[1] = 150, y[1] = 200, x[2] = 200, y[2] = 100;
+    angle = 20;
     rotation();
     getch();
     return 0;
