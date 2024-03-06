@@ -1,7 +1,7 @@
 #include <graphics.h>
 #include <bits/stdc++.h>
 
-int n, x[100], y[100], i;
+int n = 3, x[100], y[100], i;
 float sfx, sfy;
 using namespace std;
 
@@ -25,14 +25,8 @@ void scale() {
 int main() {
     int gd = DETECT, gm;
 	initgraph(&gd, &gm, "");
-    cout << "Enter no. of sides in polygon: ";
-    cin >> n;
-    cout << "Enter coordinates x, y for each vertex: ";
-    for (i = 0; i < n; i++) {
-        cin >> x[i] >> y[i];
-    }
-    cout << "Enter scale factors: sfx and sfy : ";
-    cin >> sfx >> sfy;
+    x[0] = 100, y[0] = 150, x[1] = 150, y[1] = 200, x[2] = 200, y[2] = 100;
+    sfx = 1.5, sfy = 1.5;
     scale();
     getch();
     return 0;
