@@ -2,7 +2,7 @@
 #include <graphics.h>
 using namespace std;
 
-int xmin, xmax, ymin, ymax;
+int xmin = 40, xmax = 100, ymin = 40, ymax = 80;
 
 struct lines {
     int x1, y1, x2, y2;
@@ -60,7 +60,6 @@ void clip(struct lines mylines) {
         }
     }
     if ((bits1 & (1 << 2)) != (bits2 & (1 << 2))) {
-            cout << "3rd bit" << endl;
         // Case when initial point is in top of ymin
         if ((bits1 & (1 << 2)) != 0) {
             var = round((float)(ymin - c) / m);
@@ -96,19 +95,8 @@ int main() {
     int gd = DETECT, gm;
     initgraph(&gd, &gm, "");
 
-    // Setting values of Clipping window
-    xmin = 40;
-    xmax = 100;
-    ymin = 40;
-    ymax = 80;
-
     // initialize the graph
-
-    // Drawing Window using Lines
-    line(xmin, ymin, xmax, ymin);
-    line(xmax, ymin, xmax, ymax);
-    line(xmax, ymax, xmin, ymax);
-    line(xmin, ymax, xmin, ymin);
+    rectangle(xmin, ymin, xmax, ymax);
 
     // Assume 4 lines to be clipped
     struct lines mylines[4];
@@ -136,6 +124,7 @@ int main() {
 
     // Drawing Initial Lines without clipping
     for (int i = 0; i < 4; i++) {
+        setcolor(RED);
         line(mylines[i].x1, mylines[i].y1,
              mylines[i].x2, mylines[i].y2);
         delay(1000);
