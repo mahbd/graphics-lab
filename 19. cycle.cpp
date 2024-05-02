@@ -73,16 +73,15 @@ void cycle(int offset) {
     dda(190 + offset, 250, 90 + offset, 250);
     rectangle(105 + offset, 230, 115 + offset, 240);
     dda(200 + offset, 250, 180 + offset, 215);
-
 }
 
 int main() {
     int gd = DETECT, gm;
 	initgraph(&gd, &gm, "");
 	cycle(0);
-	for (int i = 0; i < 500; i += 4) {
+	for (int i = 0; ; i += 5) {
         cleardevice();
-        cycle(i);
+        cycle((i % 700) - 100);
         delay(200);
 	}
 	getch();
